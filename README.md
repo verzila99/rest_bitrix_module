@@ -41,11 +41,11 @@ RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
 
 > | name              |  type     | data type      | description                         |
 > |-------------------|-----------|----------------|-------------------------------------|
-> | `login` |  required | int    |     login   |
-> | `email` |  required | int    |     email    |
-> | `password` |  required | int    |     password   |
-> | `name` |            | int    |     name    |
-> | `last_name` |       | int    |     last name     |
+> | `login` |  required | string    |     login   |
+> | `email` |  required | string    |     email    |
+> | `password` |  required | string    |     password   |
+> | `name` |            | string    |     name    |
+> | `last_name` |       | string    |     last name     |
 
 ##### Responses
 
@@ -67,11 +67,11 @@ RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
 > | name              |  type     | data type      | description                         |
 > |-------------------|-----------|----------------|-------------------------------------|
 > | `id` |  required | int    |     id of user   |
-> | `login` |       | int    |     login   |
-> | `email` |        | int    |     email    |
-> | `password` |     | int    |     password   |
-> | `name` |            | int    |     name    |
-> | `last_name` |       | int    |     last name     |
+> | `login` |       | string   |     login   |
+> | `email` |        | string    |     email    |
+> | `password` |     | string    |     password   |
+> | `name` |            | string    |     name    |
+> | `last_name` |       | string    |     last name     |
 
 ##### Responses
 
@@ -114,7 +114,7 @@ RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
 > | name              |  type     | data type      | description                         |
 > |-------------------|-----------|----------------|-------------------------------------|
 > | `id` |  required | int    |     id of user   |
-> | `groups` |  required | int    |     groups to add the user to   |
+> | `group` |  required | int    |     group to add the user to   |
 
 ##### Responses
 

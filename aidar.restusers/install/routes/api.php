@@ -133,7 +133,7 @@ return function (RoutingConfigurator $routes) {
             $user = CUser::GetByID($request['id']);
 
             if ($user->fetch()) {
-                $arrGroups_new = $request['groups']; // в какие группы хотим добавить
+                $arrGroups_new = [$request['group']]; // в какую группу хотим добавить
                 $arrGroups_old = $user->GetUserGroupArray(); // получим текущие группы
                 $arrGroups = array_unique(array_merge($arrGroups_old, $arrGroups_new)); // объединим два массива и удалим дубли
                 $user->Update($user->GetID(), array("GROUP_ID" => $arrGroups)); // обновим профайл пользователя в базе
