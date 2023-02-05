@@ -6,7 +6,7 @@ use Bitrix\main\IO\Directory;
 
 
 
-class aidar_somemodule extends CModule
+class aidar_restusers extends CModule
 {
 	public $MODULE_ID;
 	public $MODULE_GROUP_RIGHTS;
@@ -22,7 +22,7 @@ class aidar_somemodule extends CModule
 	{
 		$arModuleVersion = [];
 		include(__DIR__ . '/version.php');
-		$this->MODULE_ID = 'aidar_restusers';
+		$this->MODULE_ID = 'aidar.restusers';
 		$this->MODULE_GROUP_RIGHTS = 'Y';
 		$this->MODULE_VERSION = $arModuleVersion['VERSION'];
 		$this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
