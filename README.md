@@ -7,11 +7,9 @@
 
 ```
 #RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
-
 #RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
 
 RewriteCond %{REQUEST_FILENAME} !/bitrix/routing_index.php$
-
 RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
 ```
 ## Использвание:
