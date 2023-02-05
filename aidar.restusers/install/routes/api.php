@@ -9,11 +9,11 @@ return function (RoutingConfigurator $routes) {
         '/users/{id}',
         function ($id) {
 
-            $user = CUser::GetByID($id);
+            $user = CUser::GetByID($id)->fetch();
 
-            if ($user->Fetch()) {
+            if ($user) {
                 return new \Bitrix\Main\Engine\Response\Json([
-                    $user->Fetch(),
+                    $user,
                 ]);
             } else {
                 $user->LAST_ERROR = 'Пользователь с таким id не найден';
