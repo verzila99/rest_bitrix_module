@@ -4,16 +4,15 @@
 `local/modules` и установить через админку
 
 Для запуска новой системы роутинга нужно перенаправить обработку 404 ошибок на файл routing_index.php в файле .htaccess:
-<code>
 
-#RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+<code>#RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
 
 #RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
 
 RewriteCond %{REQUEST_FILENAME} !/bitrix/routing_index.php$
 
-RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
-</code>
+RewriteRule ^(.*)$ /bitrix/routing_index.php [L]</code>
+
 ## Использвание:
 #### Получение пользователя по id
 
