@@ -126,28 +126,43 @@ return function (RoutingConfigurator $routes) {
     $routes->post(
         '/users/authorize',
         function (HttpRequest $request) {
+
             $error = '';
+
             if (!isset($request['id'])) {
                 $error = 'id отсутствует';
             }
-            $user = CUser::GetByID($request['id']);
+            $user = CUser::GetByID($request['id'])->fetch();
 
-            if ($user->fetch()) {
+            $groups = CGroup::GetList("c_sort", "asc", [], "N");
+
+            while ($item = $groups->fetch()) {
+                $allGroups[] = $item['ID'];
+            }
+            if ($user && in_array($request['group'], $allGroups)) {
+
                 $arrGroups_new = [$request['group']]; // в какую группу хотим добавить
-                $arrGroups_old = $user->GetUserGroupArray(); // получим текущие группы
+                $arrGroups_old = CUser::GetUserGroup($request['id']); // получим текущие группы
                 $arrGroups = array_unique(array_merge($arrGroups_old, $arrGroups_new)); // объединим два массива и удалим дубли
-                $user->Update($user->GetID(), array("GROUP_ID" => $arrGroups)); // обновим профайл пользователя в базе
-                $user->Authorize($user->GetID());
-                if ($user->Authorize($user->GetID())) {
+                $a = new CUser;
+                $a->Update($user['ID'], array("GROUP_ID" => $arrGroups)); // обновим профайл пользователя в базе
+                $userState = $a->Authorize($user['ID']);
+
+                if ($userState) {
                     return new \Bitrix\Main\Engine\Response\Json([
                         'message' => 'Пользователь успешно авторизован!',
+                        'l' => $allGroups
                     ]);
                 }
+            } elseif (!in_array($request['group'], $allGroups)) {
+
+                $error = 'Такой группы не существует';
             } else {
 
                 $error = 'Пользователь с таким id не найден';
             }
             $response = new \Bitrix\Main\HttpResponse();
+
             $response->addHeader('Content-Type', 'application/json')->setStatus('400')->setContent(json_encode([
                 'message' => $error
             ]));
