@@ -66,9 +66,9 @@ RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
 > | name              |  type     | data type      | description                         |
 > |-------------------|-----------|----------------|-------------------------------------|
 > | `id` |  required | int    |     id of user   |
-> | `login` |  required | int    |     login   |
-> | `email` |  required | int    |     email    |
-> | `password` |  required | int    |     password   |
+> | `login` |       | int    |     login   |
+> | `email` |        | int    |     email    |
+> | `password` |     | int    |     password   |
 > | `name` |            | int    |     name    |
 > | `last_name` |       | int    |     last name     |
 
