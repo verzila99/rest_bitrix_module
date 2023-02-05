@@ -29,6 +29,7 @@ RewriteRule ^(.*)$ /bitrix/routing_index.php [L]
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
 > | `200`         | `application/json`        | json object  |
+> | `400`         | `application/json`        | error message  |
 </details>
 
 #### Добавление нового пользователя
